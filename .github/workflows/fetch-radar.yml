@@ -2,7 +2,7 @@ name: Fetch Growth Signals
 
 on:
   schedule:
-    - cron: "0 5 * * 1,4"
+    - cron: "30 5 * * 1,4"
   workflow_dispatch: {}
 
 permissions:
@@ -29,4 +29,5 @@ jobs:
           git config user.email "bot@kempkenskohler.com"
           git add wachstums-radar/data/pending.json wachstums-radar/data/hr-cursor.json
           git diff --cached --quiet || git commit -m "Radar pending: $(date +%Y-%m-%d)"
+          git pull --rebase
           git push
