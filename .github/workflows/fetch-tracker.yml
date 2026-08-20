@@ -1,0 +1,32 @@
+name: Fetch Leadership Changes
+
+on:
+  schedule:
+    - cron: "0 5 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Ingest sources & extract changes
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          HANDELSREGISTER_API_KEY: ${{ secrets.HANDELSREGISTER_API_KEY }}
+        run: cd leadership-tracker && node scripts/fetch-tracker.js
+
+      - name: Commit pending queue
+        run: |
+          git config user.name "kxk-tracker-bot"
+          git config user.email "bot@kempkenskohler.com"
+          git add leadership-tracker/data/pending.json leadership-tracker/data/hr-cursor.json
+          git diff --cached --quiet || git commit -m "Tracker pending: $(date +%Y-%m-%d)"
+          git push
