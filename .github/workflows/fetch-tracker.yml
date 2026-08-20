@@ -23,10 +23,17 @@ jobs:
           HANDELSREGISTER_API_KEY: ${{ secrets.HANDELSREGISTER_API_KEY }}
         run: cd leadership-tracker && node scripts/fetch-tracker.js
 
+      - name: Push queue to Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node scripts/push-to-supabase.js --tool tracker --file leadership-tracker/data/pending.json
+
       - name: Commit pending queue
         run: |
           git config user.name "kxk-tracker-bot"
           git config user.email "bot@kempkenskohler.com"
           git add leadership-tracker/data/pending.json leadership-tracker/data/hr-cursor.json
           git diff --cached --quiet || git commit -m "Tracker pending: $(date +%Y-%m-%d)"
+          git pull --rebase
           git push

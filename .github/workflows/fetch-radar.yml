@@ -23,6 +23,12 @@ jobs:
           HANDELSREGISTER_API_KEY: ${{ secrets.HANDELSREGISTER_API_KEY }}
         run: cd wachstums-radar && node scripts/fetch-radar.js
 
+      - name: Push queue to Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node scripts/push-to-supabase.js --tool radar --file wachstums-radar/data/pending.json
+
       - name: Commit pending queue
         run: |
           git config user.name "kxk-radar-bot"
