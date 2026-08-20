@@ -1,6 +1,240 @@
 {
   "entries": [
     {
+      "id": "mt1hczt26lkn",
+      "date": "2026-08-20",
+      "company": "Munich Re",
+      "location": "München · Rückversicherung / Cyber Insurance",
+      "signal_type": "ma",
+      "round_label": "Akquisition · ca. 530 Mio. EUR",
+      "amount_meur": 530,
+      "desc": "Munich Re übernimmt das israelisch-amerikanische Cyber-Insurtech At-Bay für 575 Mio. USD und stärkt damit sein Cyber-Versicherungsportfolio durch Integration einer technologiegetriebenen Underwriting-Plattform.",
+      "implications": [
+        {
+          "label": "Head of Cyber Underwriting / CUO Cyber",
+          "strength": "hard"
+        },
+        {
+          "label": "Chief Integration Officer / PMI-Lead",
+          "strength": "soft"
+        },
+        {
+          "label": "CDO / Head of Data & AI (Cyber)",
+          "strength": "soft"
+        }
+      ],
+      "source": "sb",
+      "url": "https://www.startbase.de/news/munich-re-uebernimmt-cyber-insurtech-at-bay-fuer-575-millionen-us-dollar/"
+    },
+    {
+      "id": "mt1he0asp6bx",
+      "date": "2026-08-20",
+      "company": "Dash0",
+      "location": "Berlin · Observability SaaS",
+      "signal_type": "ma",
+      "round_label": "Add-on-Akquisition",
+      "amount_meur": null,
+      "desc": "Das deutsche Observability-Unicorn Dash0 übernimmt das Berliner Startup Polar Signals, um seine Plattform um selbstoptimierende Software-Technologie zu erweitern.",
+      "implications": [
+        {
+          "label": "VP Engineering / CTO Integration",
+          "strength": "hard"
+        },
+        {
+          "label": "Chief Product Officer",
+          "strength": "soft"
+        },
+        {
+          "label": "VP Corporate Development",
+          "strength": "soft"
+        }
+      ],
+      "source": "gs",
+      "url": "https://www.businessinsider.de/gruenderszene/milliarden-startup-dash0-kauft-berliner-tech-firma-das-steckt-dahinter/"
+    },
+    {
+      "id": "mt1hd29brosq",
+      "date": "2026-08-19",
+      "company": "Oceanloop",
+      "location": null,
+      "signal_type": "funding",
+      "round_label": "Finanzierungsrunde · 38,5 Mio. €",
+      "amount_meur": 38.5,
+      "desc": "Oceanloop hat in einer Finanzierungsrunde 38,5 Millionen Euro eingesammelt.",
+      "implications": [
+        {
+          "label": "CFO-Bedarf",
+          "strength": "soft"
+        },
+        {
+          "label": "VP Sales / CRO",
+          "strength": "soft"
+        },
+        {
+          "label": "Head of Operations",
+          "strength": "soft"
+        }
+      ],
+      "source": "ds",
+      "url": "https://www.deutsche-startups.de/2026/08/19/oceanloop-sammelt-385-millionen-ein/"
+    },
+    {
+      "id": "mt1hdulrwe8l",
+      "date": "2026-08-19",
+      "company": "Flip",
+      "location": "Stuttgart · HR/Frontline SaaS",
+      "signal_type": "funding",
+      "round_label": "Series B · 22 Mio. €",
+      "amount_meur": 22,
+      "desc": "Flip, eine Stuttgarter Employee-Experience-Plattform für Frontline-Worker, hat 22 Mio. EUR von Notion Capital, HV Capital und der L-Bank eingesammelt, um KI-Infrastruktur und Wissensmanagement für desklose Rollen auszubauen.",
+      "implications": [
+        {
+          "label": "VP Sales / CRO (DACH-Expansion)",
+          "strength": "hard"
+        },
+        {
+          "label": "VP Engineering / Head of AI",
+          "strength": "hard"
+        },
+        {
+          "label": "CFO (Vorbereitung Series C)",
+          "strength": "soft"
+        }
+      ],
+      "source": "eus",
+      "url": "https://www.eu-startups.com/2026/08/a-year-after-their-last-raise-germanys-flip-raises-e22-million-to-scale-its-frontline-ai-platform/"
+    },
+    {
+      "id": "mt1he3qo41q8",
+      "date": "2026-08-19",
+      "company": "Glow25",
+      "location": "DACH · Beauty/Health E-Commerce",
+      "signal_type": "restr",
+      "round_label": "Restrukturierung",
+      "amount_meur": null,
+      "desc": "Glow25 baut nach starkem Personalaufbau von 130 auf 240 Mitarbeitende nun Stellen massiv ab und begründet dies mit der Automatisierung von Prozessen durch KI.",
+      "implications": [
+        {
+          "label": "COO / Head of Operations",
+          "strength": "soft"
+        },
+        {
+          "label": "Chief People Officer / HR-Führung",
+          "strength": "soft"
+        },
+        {
+          "label": "Head of Technology / KI-Transformation",
+          "strength": "soft"
+        }
+      ],
+      "source": "gs",
+      "url": "https://www.businessinsider.de/gruenderszene/entlassungswelle-bei-glow25-erst-mitarbeiterzahl-verdoppelt-jetzt-ki/"
+    },
+    {
+      "id": "mt1hd5pfxunu",
+      "date": "2026-08-18",
+      "company": "accompio",
+      "location": null,
+      "signal_type": "ma",
+      "round_label": "Add-on-Akquisition",
+      "amount_meur": null,
+      "desc": "accompio übernimmt das österreichische IT-Dienstleistungsunternehmen techbold und setzt damit seine M&A-getriebene Wachstumsstrategie im DACH-IT-Services-Markt fort.",
+      "implications": [
+        {
+          "label": "Integration-/PMI-Manager",
+          "strength": "hard"
+        },
+        {
+          "label": "COO-Bedarf (operative Skalierung)",
+          "strength": "soft"
+        },
+        {
+          "label": "CFO / Head of Finance (Konsolidierung Gruppenstruktur)",
+          "strength": "soft"
+        }
+      ],
+      "source": "ds",
+      "url": "https://www.deutsche-startups.de/2026/08/18/gravis-robotics-erhalt-200-millionen/"
+    },
+    {
+      "id": "mt1hd8lnbgs7",
+      "date": "2026-08-18",
+      "company": "everyone energy",
+      "location": "Deutschland · Energie",
+      "signal_type": "restr",
+      "round_label": "Restrukturierung / Insolvenz",
+      "amount_meur": null,
+      "desc": "Der Energieanbieter everyone energy hat Insolvenz angemeldet.",
+      "implications": [
+        {
+          "label": "Restrukturierungsgeschäftsführer (CRO/Sanierungsmanager)",
+          "strength": "hard"
+        },
+        {
+          "label": "Interim CFO",
+          "strength": "soft"
+        },
+        {
+          "label": "Chief Restructuring Officer",
+          "strength": "soft"
+        }
+      ],
+      "source": "ds",
+      "url": "https://www.deutsche-startups.de/2026/08/18/beyondcare-labs-everyone-energy-furo-juit-ewigbyte/"
+    },
+    {
+      "id": "mt1hdc60k973",
+      "date": "2026-08-17",
+      "company": "adesso SE / omni:us",
+      "location": "Dortmund · IT-Dienstleistungen / Insurance AI",
+      "signal_type": "ma",
+      "round_label": "Add-on-Akquisition",
+      "amount_meur": null,
+      "desc": "Der deutsche IT-Dienstleister adesso SE übernimmt den auf KI-gestützte Dokumentenverarbeitung für Versicherungen spezialisierten Berliner Anbieter omni:us.",
+      "implications": [
+        {
+          "label": "Integrationsleiter / Head of PMI",
+          "strength": "hard"
+        },
+        {
+          "label": "VP Insurance Solutions",
+          "strength": "soft"
+        },
+        {
+          "label": "Chief Product Officer (kombinierte Einheit)",
+          "strength": "soft"
+        }
+      ],
+      "source": "ds",
+      "url": "https://www.deutsche-startups.de/2026/08/17/amber-erhalt-7-millionen-adesso-kauft-omnius-expedia-ubernimmt-layla/"
+    },
+    {
+      "id": "mt1hdfpj53k2",
+      "date": "2026-08-17",
+      "company": "Pets Deli / VAFO Group",
+      "location": "Berlin · Direct-to-Consumer Pet Food",
+      "signal_type": "ma",
+      "round_label": "Exit nach Insolvenz · Akquisition durch VAFO Group",
+      "amount_meur": null,
+      "desc": "Das Berliner Premium-Tierfutterlabel Pets Deli wurde nach einer Insolvenz von der tschechischen VAFO Group übernommen und vollzieht damit einen Exit-Turnaround.",
+      "implications": [
+        {
+          "label": "Integration Lead / COO",
+          "strength": "hard"
+        },
+        {
+          "label": "CFO Restrukturierung & Carve-out",
+          "strength": "soft"
+        },
+        {
+          "label": "Country Manager DACH",
+          "strength": "soft"
+        }
+      ],
+      "source": "ds",
+      "url": "https://www.deutsche-startups.de/2026/08/17/invertix-fonio-ai-pets-deli-vafo-group-delaware-flip/"
+    },
+    {
       "id": "mrdj4jt2ly5t",
       "date": "2026-07-09",
       "company": "Beispiel Robotics GmbH",
@@ -75,7 +309,7 @@
     }
   ],
   "meta": {
-    "updated": "2026-07-09T13:16:32.607Z",
+    "updated": "2026-08-20T12:19:25.381Z",
     "demo": true
   }
 }
