@@ -56,7 +56,7 @@
       "id": "mt1hd29brosq",
       "date": "2026-08-19",
       "company": "Oceanloop",
-      "location": null,
+      "location": "Kiel / München · Aquakultur (FoodTech)",
       "signal_type": "funding",
       "round_label": "Finanzierungsrunde · 38,5 Mio. €",
       "amount_meur": 38.5,
@@ -134,7 +134,7 @@
       "id": "mt1hd5pfxunu",
       "date": "2026-08-18",
       "company": "accompio",
-      "location": null,
+      "location": "Einbeck · IT-Services (Buy-and-Build)",
       "signal_type": "ma",
       "round_label": "Add-on-Akquisition",
       "amount_meur": null,
@@ -233,83 +233,10 @@
       ],
       "source": "ds",
       "url": "https://www.deutsche-startups.de/2026/08/17/invertix-fonio-ai-pets-deli-vafo-group-delaware-flip/"
-    },
-    {
-      "id": "mrdj4jt2ly5t",
-      "date": "2026-07-09",
-      "company": "Beispiel Robotics GmbH",
-      "location": "Karlsruhe · DeepTech",
-      "signal_type": "funding",
-      "round_label": "Series A · 22 Mio. €",
-      "amount_meur": 22,
-      "desc": "Skalierung von 40 auf 160 Mitarbeitende geplant.",
-      "implications": [
-        {
-          "label": "VP Engineering",
-          "strength": "hard"
-        },
-        {
-          "label": "CHRO",
-          "strength": "hard"
-        },
-        {
-          "label": "Head of Production",
-          "strength": "soft"
-        }
-      ],
-      "source": "ds",
-      "url": "https://example.com/r1",
-      "demo": true
-    },
-    {
-      "id": "mrdj4jt3dfmd",
-      "date": "2026-07-09",
-      "company": "Beispiel Präzisionstechnik GmbH",
-      "location": "Nürnberg · Maschinenbau",
-      "signal_type": "expansion",
-      "round_label": "Werksausbau",
-      "amount_meur": null,
-      "desc": "Neues Werk in der Slowakei, Kapazität +60 % bis 2028.",
-      "implications": [
-        {
-          "label": "Werkleiter",
-          "strength": "hard"
-        },
-        {
-          "label": "Head of SCM",
-          "strength": "soft"
-        }
-      ],
-      "source": "pm",
-      "url": "https://example.com/r2",
-      "demo": true
-    },
-    {
-      "id": "mrdj64zgj7tt",
-      "date": "2026-07-09",
-      "company": "Beispiel Maschinenfabrik GmbH",
-      "location": "Leipzig · Anlagenbau",
-      "signal_type": "restr",
-      "round_label": "Eigenverwaltung",
-      "amount_meur": null,
-      "desc": "Vorläufige Eigenverwaltung angeordnet; Neuaufstellung der Führung wahrscheinlich.",
-      "implications": [
-        {
-          "label": "CRO / Sanierungs-GF",
-          "strength": "hard"
-        },
-        {
-          "label": "CFO",
-          "strength": "hard"
-        }
-      ],
-      "source": "hr",
-      "url": "https://www.insolvenzbekanntmachungen.de",
-      "demo": true
     }
   ],
   "meta": {
     "updated": "2026-08-20T12:19:25.381Z",
-    "demo": true
+    "demo": false
   }
 }
