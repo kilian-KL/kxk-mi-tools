@@ -1,3 +1,16 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "id": "mt1g85w2qtr0",
+      "date": "2026-08-18",
+      "person": "Christoph Burkhard",
+      "role": "CFO",
+      "company": "Heidelberger Druckmaschinen AG",
+      "city": "Heidelberg",
+      "vertical": "masch",
+      "summary": "Christoph Burkhard wechselt vom Baumaschinen-Hersteller Wacker Neuson als neuer Finanzvorstand zu Heidelberger Druckmaschinen, wo der Konzern sich in einer kritischen Umbruchphase befindet.",
+      "source": "fin",
+      "url": "https://www.finance-magazin.de/cfo/cfo-wechsel/christoph-burkhard-soll-als-neuer-cfo-heidelberg-druck-transformieren-249272/"
+    }
+  ]
 }
