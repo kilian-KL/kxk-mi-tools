@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#072E6B">
+<title>Wachstums-Radar DACH · Kempkens × Kohler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#072E6B; --navy-deep:#051F49; --blue:#2F63C4; --blue-soft:#DCE7F8;
+  --ice:#F2F5FA; --white:#FFFFFF; --ink:#141C2B; --muted:#5A6678;
+  --line:#DCE4F0; --r:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ice);color:var(--ink);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6}
+h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}
+.topbar{background:var(--navy-deep);color:#fff;padding:16px 0}
+.topbar .in{max-width:1040px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:17px;letter-spacing:.02em}
+.wordmark span{font-weight:400;opacity:.85}
+.topbar a{color:#B9C8E6;font-size:13px;text-decoration:none}
+.topbar a:hover{color:#fff}
+.hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;padding:64px 0 130px}
+.hero .in{max-width:1040px;margin:0 auto;padding:0 28px}
+.eyebrow{font-size:13px;letter-spacing:.06em;color:#9FB4DC;font-weight:500}
+.hero h1{font-size:clamp(32px,5vw,50px);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:16px 0 18px}
+.hero p{max-width:680px;color:#C6D3EC;font-size:17px}
+.badge{display:inline-block;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:99px;background:#A47134;color:#fff}
+.main{max-width:1040px;margin:-80px auto 0;padding:0 28px 80px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{background:var(--white);border-radius:var(--r);box-shadow:0 6px 30px rgba(7,46,107,.08);padding:18px 20px}
+.kpi .v{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800;color:var(--navy)}
+.kpi .k{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:2px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin:30px 0 16px;flex-wrap:wrap;gap:12px}
+.toolbar h2{font-size:23px;font-weight:800;letter-spacing:-.01em}
+.toolbar select{padding:10px 40px 10px 16px;border:1.5px solid var(--navy);border-radius:99px;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;color:var(--navy);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23072E6B'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;cursor:pointer}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:var(--white);border-radius:var(--r);box-shadow:0 4px 18px rgba(7,46,107,.06);padding:22px 24px;display:flex;flex-direction:column;gap:10px}
+.card .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.card .co{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px}
+.card .loc{font-size:12px;color:var(--muted);margin-top:1px}
+.card .round{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--blue);font-weight:700;white-space:nowrap}
+.card .desc{font-size:13.5px;color:var(--muted)}
+.card .srcline{font-size:11.5px;color:var(--muted)}
+.card .srcline a{color:var(--navy);text-decoration:none}
+.card .srcline a:hover{text-decoration:underline}
+.signals{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+.sig{font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:700;padding:5px 11px;border-radius:99px;background:var(--navy);color:#fff}
+.sig.soft{background:var(--blue-soft);color:var(--navy)}
+.empty{padding:40px;text-align:center;color:var(--muted);background:var(--white);border-radius:var(--r);border:1.5px dashed var(--line);grid-column:1/-1}
+.cta{margin-top:26px;background:var(--navy);border-radius:var(--r);color:#fff;padding:30px 32px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.cta .t{font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;font-weight:800}
+.cta .s{font-size:13.5px;color:#B9C8E6;margin-top:3px}
+.btn{background:#fff;color:var(--navy);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;padding:13px 24px;border-radius:99px;text-decoration:none;white-space:nowrap;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.err{margin-top:22px;background:#FBECE8;border:1px solid #E8C0B5;border-radius:var(--r);padding:16px 22px;font-size:13.5px;color:#8A3B2E;display:none}
+.note{margin-top:22px;background:var(--white);border-radius:var(--r);padding:20px 26px;font-size:13px;color:var(--muted);border-left:4px solid var(--navy)}
+.note b{color:var(--ink)}
+footer{background:var(--navy-deep);color:#9FB4DC;margin-top:60px;padding:26px 0}
+footer .in{max-width:1040px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;font-size:12.5px;flex-wrap:wrap;gap:8px}
+@media(max-width:780px){.kpis{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="in">
+  <div class="wordmark">KEMPKENS <span>×</span> KOHLER</div>
+  <a href="https://www.kempkenskohler.com/">kempkenskohler.com →</a>
+</div></div>
+
+<div class="hero"><div class="in">
+  <div class="eyebrow">— Market Intelligence · DACH</div>
+  <h1>Wachstums-Radar DACH</h1>
+  <p>Finanzierungsrunden, Expansionen und Restrukturierungen als Frühindikatoren für Führungskräftebedarf. Jedes Signal wird von uns übersetzt: Welche Positionen werden in den nächsten 6–12 Monaten wahrscheinlich besetzt?</p>
+  <span class="badge" id="demobadge" style="display:none">Demodaten — Pipeline im Aufbau</span>
+</div></div>
+
+<div class="main">
+  <div id="error" class="err"></div>
+  <div id="app" style="display:none">
+    <div class="kpis">
+      <div class="kpi"><div class="v" id="k-week">–</div><div class="k">Signale (7 Tage)</div></div>
+      <div class="kpi"><div class="v" id="k-cap">–</div><div class="k">Kapital (30 Tage)</div></div>
+      <div class="kpi"><div class="v" id="k-need">–</div><div class="k">Meistindizierter Bedarf</div></div>
+      <div class="kpi"><div class="v" id="k-city">–</div><div class="k">Aktivster Standort</div></div>
+    </div>
+
+    <div class="toolbar">
+      <h2>Aktuelle Signale</h2>
+      <select id="fsel" aria-label="Nach Signaltyp filtern">
+        <option value="alle">Alle Signaltypen</option>
+        <option value="funding">Finanzierung</option>
+        <option value="expansion">Expansion</option>
+        <option value="ma">M&amp;A / Buy-out</option>
+        <option value="restr">Restrukturierung</option>
+      </select>
+    </div>
+
+    <div class="cards" id="cards"></div>
+
+    <div class="cta">
+      <div>
+        <div class="t">Ein Signal betrifft Ihr Unternehmen — oder Ihren Wettbewerber?</div>
+        <div class="s">Wir besetzen die Position, bevor der Markt sie ausschreibt.</div>
+      </div>
+      <a class="btn" href="https://www.kempkenskohler.com/kontakt/">Find executives</a>
+    </div>
+
+    <div class="note"><b>Methodik &amp; Datenquellen.</b> Finanzierungs-, Expansions- und M&amp;A-Signale aus öffentlich zugänglichen RSS-Quellen (Startbase, deutsche-startups.de, EU-Startups, Pressemitteilungs-Feeds); Restrukturierungssignale aus öffentlichen Insolvenzbekanntmachungen. Fakten werden in eigener Formulierung zusammengefasst, jedes Signal verlinkt auf die Originalquelle; redaktionelle Prüfung vor Veröffentlichung. Die ausgewiesenen Hiring-Implikationen sind <b>Einschätzungen</b> auf Basis von Signaltyp und Unternehmensphase, keine Tatsachenbehauptungen über konkrete Vakanzen. Das Radar ist eine kuratierte Auswahl, keine Vollerhebung des Markts, und enthält keinerlei Anlageinformationen oder Bewertungen von Unternehmen als Investment. <span id="stand"></span></div>
+  </div>
+</div>
+
+<footer><div class="in">
+  <span>© 2026 Kempkens × Kohler GmbH · Pienzenauerstraße 14 · 81679 München</span>
+  <span>Building legacies.</span>
+</div></footer>
+
+<script>
+/* ================= DATENQUELLE =================
+   1. KXK_DATA_URL — GitHub-Raw-URL von public/radar-data.json
+   2. "radar-data.json" relativ
+   3. Eingebetteter Fallback — Seite rendert immer.
+================================================== */
+const KXK_DATA_URL = "";
+
+let ENTRIES = [];
+const state = { t: "alle" };
+const daysAgo = iso => (Date.now() - new Date(iso)) / 86400000;
+const top = arr => { const c={}; arr.forEach(x=>x&&(c[x]=(c[x]||0)+1));
+  return Object.entries(c).sort((a,b)=>b[1]-a[1])[0]?.[0] || "–"; };
+const fmtDate = iso => { const [y,m,d]=iso.split("-"); return `${d}.${m}.${y.slice(2)}`; };
+
+function renderKpis(){
+  document.getElementById("k-week").textContent = ENTRIES.filter(e=>daysAgo(e.date)<=7).length;
+  const cap = ENTRIES.filter(e=>daysAgo(e.date)<=30 && e.amount_meur)
+    .reduce((s,e)=>s+e.amount_meur,0);
+  document.getElementById("k-cap").textContent = cap ? Math.round(cap).toLocaleString("de-DE")+" Mio. €" : "–";
+  document.getElementById("k-need").textContent =
+    top(ENTRIES.flatMap(e=>(e.implications||[]).filter(i=>i.strength==="hard").map(i=>i.label)));
+  document.getElementById("k-city").textContent =
+    top(ENTRIES.map(e=>(e.location||"").split("·")[0].trim()));
+}
+
+function renderCards(){
+  const rows = ENTRIES.filter(e => state.t==="alle" || e.signal_type===state.t);
+  const cards = document.getElementById("cards");
+  if (!rows.length){ cards.innerHTML = '<div class="empty">Keine Signale für diese Auswahl.</div>'; return; }
+  const SL = { sb:"Startbase", ds:"deutsche-startups.de", eus:"EU-Startups", pm:"PresseBox", hr:"Insolvenzbekanntmachung" };
+  cards.innerHTML = rows.map(e => `
+    <div class="card">
+      <div class="top"><div><div class="co">${e.company}</div><div class="loc">${e.location||""}</div></div>
+      <div class="round">${e.round_label||""}</div></div>
+      <div class="desc">${e.desc||""}</div>
+      <div class="srcline">${fmtDate(e.date)} · <a href="${e.url}" rel="noopener" target="_blank">${SL[e.source]||e.source} →</a></div>
+      <div class="signals">${(e.implications||[]).map(i=>`<span class="sig ${i.strength==='soft'?'soft':''}">${i.label}</span>`).join("")}</div>
+    </div>`).join("");
+}
+
+async function tryFetch(url){
+  const res = await fetch(url,{cache:"no-store"});
+  if(!res.ok) throw new Error("HTTP "+res.status);
+  const d = await res.json();
+  if(!d.entries) throw new Error("ungültige Daten");
+  return d;
+}
+
+async function init(){
+  let data = null;
+  const sources = [];
+  if (KXK_DATA_URL) sources.push(KXK_DATA_URL);
+  sources.push("radar-data.json");
+  for (const url of sources){ try { data = await tryFetch(url); break; } catch(e){} }
+  if (!data){
+    try { data = JSON.parse(document.getElementById("fallback-data").textContent); }
+    catch(e){ const el=document.getElementById("error");
+      el.style.display="block"; el.textContent="Daten konnten nicht geladen werden."; return; }
+  }
+  ENTRIES = data.entries.slice().sort((a,b)=>b.date.localeCompare(a.date));
+  document.getElementById("app").style.display="block";
+  if ((data.meta||{}).demo || ENTRIES.some(e=>e.demo))
+    document.getElementById("demobadge").style.display="inline-block";
+  if ((data.meta||{}).updated)
+    document.getElementById("stand").textContent = "Datenstand: " +
+      new Date(data.meta.updated).toLocaleDateString("de-DE",{day:"2-digit",month:"long",year:"numeric"}) + ".";
+  document.getElementById("fsel").addEventListener("change", e => { state.t=e.target.value; renderCards(); });
+  renderKpis(); renderCards();
+}
+init();
+</script>
+<script type="application/json" id="fallback-data">
+{
+  "entries": [
+    {
+      "id": "mrdj4jt2ly5t",
+      "date": "2026-07-09",
+      "company": "Beispiel Robotics GmbH",
+      "location": "Karlsruhe · DeepTech",
+      "signal_type": "funding",
+      "round_label": "Series A · 22 Mio. €",
+      "amount_meur": 22,
+      "desc": "Skalierung von 40 auf 160 Mitarbeitende geplant.",
+      "implications": [
+        {
+          "label": "VP Engineering",
+          "strength": "hard"
+        },
+        {
+          "label": "CHRO",
+          "strength": "hard"
+        },
+        {
+          "label": "Head of Production",
+          "strength": "soft"
+        }
+      ],
+      "source": "ds",
+      "url": "https://example.com/r1",
+      "demo": true
+    },
+    {
+      "id": "mrdj4jt3dfmd",
+      "date": "2026-07-09",
+      "company": "Beispiel Präzisionstechnik GmbH",
+      "location": "Nürnberg · Maschinenbau",
+      "signal_type": "expansion",
+      "round_label": "Werksausbau",
+      "amount_meur": null,
+      "desc": "Neues Werk in der Slowakei, Kapazität +60 % bis 2028.",
+      "implications": [
+        {
+          "label": "Werkleiter",
+          "strength": "hard"
+        },
+        {
+          "label": "Head of SCM",
+          "strength": "soft"
+        }
+      ],
+      "source": "pm",
+      "url": "https://example.com/r2",
+      "demo": true
+    },
+    {
+      "id": "mrdj4jt320lh",
+      "date": "2026-07-09",
+      "company": "Beispiel Maschinenfabrik GmbH",
+      "location": "Leipzig · Anlagenbau",
+      "signal_type": "restr",
+      "round_label": "Eigenverwaltung",
+      "amount_meur": null,
+      "desc": "Vorläufige Eigenverwaltung angeordnet; Neuaufstellung der Führung wahrscheinlich.",
+      "implications": [
+        {
+          "label": "CRO / Sanierungs-GF",
+          "strength": "hard"
+        },
+        {
+          "label": "CFO",
+          "strength": "hard"
+        }
+      ],
+      "source": "hr",
+      "url": "https://www.insolvenzbekanntmachungen.de",
+      "demo": true
+    }
+  ],
+  "meta": {
+    "updated": "2026-07-09T13:15:18.526Z",
+    "demo": true
+  }
+}
+</script>
+</body>
+</html>

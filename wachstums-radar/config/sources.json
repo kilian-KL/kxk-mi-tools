@@ -1,0 +1,88 @@
+{
+  "comment": "Quellen des Wachstums-Radars. Feed-URLs vor Livegang mit 'node scripts/check-sources.js' verifizieren. Das Radar ist bewusst als kuratierte Auswahl deklariert, nicht als Vollerhebung — die RSS-Variante deckt DACH-relevante Runden gut, aber nicht lückenlos ab (Upgrade-Pfad: Dealroom/Crunchbase-Lizenz). | 19.08.2026 geprueft: PresseBox lieferte 403, ersetzt durch Gruenderszene.",
+  "rss": [
+    {
+      "id": "sb",
+      "label": "Startbase",
+      "url": "https://www.startbase.de/feed/",
+      "paywalled": false
+    },
+    {
+      "id": "ds",
+      "label": "deutsche-startups.de",
+      "url": "https://www.deutsche-startups.de/feed/",
+      "paywalled": false
+    },
+    {
+      "id": "eus",
+      "label": "EU-Startups",
+      "url": "https://www.eu-startups.com/feed/",
+      "paywalled": false
+    },
+    {
+      "id": "gs",
+      "label": "Gruenderszene",
+      "url": "https://www.gruenderszene.de/feed",
+      "paywalled": false
+    }
+  ],
+  "handelsregister": {
+    "enabled": false,
+    "base_url": "https://handelsregister.ai/api/v1",
+    "feature": "insolvencies",
+    "comment": "Restrukturierungssignale: Insolvenz-Bekanntmachungen der Watchlist-Unternehmen (gleicher Key wie beim Tracker, Header x-api-key). Endpunkt beim Setup gegen die Doku prüfen. | 19.08.2026: auf false gesetzt — laeuft rein RSS-basiert.",
+    "max_calls_per_run": 10,
+    "budget_comment": "Ein Aufruf pro Firma = ein Credit. Watchlist wird rotierend abgearbeitet (data/hr-cursor.json). 10 Aufrufe x 8 Laeufe/Monat (Mo+Do) = 80 Credits/Monat."
+  },
+  "relevance_keywords": {
+    "funding": [
+      "Finanzierungsrunde",
+      "Series A",
+      "Series B",
+      "Series C",
+      "Seed",
+      "Wachstumsfinanzierung",
+      "Millionen ein",
+      "Mio. Euro",
+      "Kapitalerhöhung",
+      "raises",
+      "funding round",
+      "IPO",
+      "Börsengang"
+    ],
+    "expansion": [
+      "neues Werk",
+      "Werksausbau",
+      "Expansion",
+      "expandiert",
+      "neuer Standort",
+      "Produktionskapazität",
+      "Stellen schaffen",
+      "Mitarbeiter einstellen",
+      "verdoppelt",
+      "verdreifacht"
+    ],
+    "ma": [
+      "übernimmt",
+      "Übernahme",
+      "Akquisition",
+      "akquiriert",
+      "Add-on",
+      "Buy-out",
+      "Mehrheitsbeteiligung",
+      "Carve-out",
+      "Fusion",
+      "Merger"
+    ],
+    "restr": [
+      "Insolvenz",
+      "Schutzschirm",
+      "Restrukturierung",
+      "Sanierung",
+      "Eigenverwaltung",
+      "Stellenabbau",
+      "Nachfolgeprozess",
+      "Nachfolgeregelung"
+    ]
+  }
+}

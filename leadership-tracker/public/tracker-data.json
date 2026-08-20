@@ -1,0 +1,47 @@
+{
+  "entries": [
+    {
+      "id": "mrdiu9n289fp",
+      "date": "2026-07-09",
+      "person": "Mira Holzner",
+      "role": "CFO",
+      "company": "Beispiel Antriebstechnik GmbH",
+      "city": "Augsburg",
+      "vertical": "masch",
+      "summary": "wird CFO der Beispiel Antriebstechnik GmbH, Augsburg",
+      "source": "fin",
+      "url": "https://example.com/1",
+      "demo": true
+    },
+    {
+      "id": "mrdiu9n31jnm",
+      "date": "2026-07-09",
+      "person": "Jonas Reck",
+      "role": "CEO",
+      "company": "Beispiel Therapeutics AG",
+      "city": "Martinsried",
+      "vertical": "ls",
+      "summary": "übernimmt den Vorstandsvorsitz der Beispiel Therapeutics AG, Martinsried",
+      "source": "pw",
+      "url": "https://example.com/2",
+      "demo": true
+    },
+    {
+      "id": "mrdium5vffsp",
+      "date": "2026-07-09",
+      "person": "Deniz Karahan",
+      "role": "Geschäftsführer",
+      "company": "Beispiel Software GmbH",
+      "city": "München",
+      "vertical": "tech",
+      "summary": "neu bestellt als Geschäftsführer der Beispiel Software GmbH, München",
+      "source": "hr",
+      "url": "https://www.handelsregister.de",
+      "demo": true
+    }
+  ],
+  "meta": {
+    "updated": "2026-07-09T13:07:35.003Z",
+    "demo": true
+  }
+}

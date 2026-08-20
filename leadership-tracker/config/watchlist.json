@@ -1,0 +1,10 @@
+{
+  "comment": "Watchlist für das tägliche Handelsregister-Polling. Strategisch: 500–2.000 Zielunternehmen entlang der fünf Verticals — die Grundgesamtheit existiert aus der KxK-Leadgen (HubSpot-Export: Firmenname + Sitz genügt). Die Einträge unten sind ILLUSTRATIVE Platzhalter zum Testen des Formats; vor Livegang durch die echte Zielliste ersetzen. 'vertical' steuert die Vorklassifikation, die LLM-Klassifikation kann sie überstimmen.",
+  "companies": [
+    { "name": "Beispiel Antriebstechnik GmbH", "city": "Augsburg",  "vertical": "masch" },
+    { "name": "Beispiel Therapeutics AG",      "city": "Martinsried","vertical": "ls" },
+    { "name": "Beispiel Software GmbH",        "city": "München",   "vertical": "tech" },
+    { "name": "Beispiel Portfolio Holding",    "city": "Frankfurt", "vertical": "pe" },
+    { "name": "Beispiel & Söhne KG",           "city": "Bielefeld", "vertical": "fam" }
+  ]
+}
