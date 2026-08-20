@@ -1,47 +1,19 @@
 {
   "entries": [
     {
-      "id": "mrdiu9n289fp",
-      "date": "2026-07-09",
-      "person": "Mira Holzner",
+      "id": "mt1g85w2qtr0",
+      "date": "2026-08-18",
+      "person": "Christoph Burkhard",
       "role": "CFO",
-      "company": "Beispiel Antriebstechnik GmbH",
-      "city": "Augsburg",
+      "company": "Heidelberger Druckmaschinen AG",
+      "city": "Heidelberg",
       "vertical": "masch",
-      "summary": "wird CFO der Beispiel Antriebstechnik GmbH, Augsburg",
+      "summary": "Christoph Burkhard wechselt vom Baumaschinen-Hersteller Wacker Neuson als neuer Finanzvorstand zu Heidelberger Druckmaschinen, wo der Konzern sich in einer kritischen Umbruchphase befindet.",
       "source": "fin",
-      "url": "https://example.com/1",
-      "demo": true
-    },
-    {
-      "id": "mrdiu9n31jnm",
-      "date": "2026-07-09",
-      "person": "Jonas Reck",
-      "role": "CEO",
-      "company": "Beispiel Therapeutics AG",
-      "city": "Martinsried",
-      "vertical": "ls",
-      "summary": "übernimmt den Vorstandsvorsitz der Beispiel Therapeutics AG, Martinsried",
-      "source": "pw",
-      "url": "https://example.com/2",
-      "demo": true
-    },
-    {
-      "id": "mrdium5vffsp",
-      "date": "2026-07-09",
-      "person": "Deniz Karahan",
-      "role": "Geschäftsführer",
-      "company": "Beispiel Software GmbH",
-      "city": "München",
-      "vertical": "tech",
-      "summary": "neu bestellt als Geschäftsführer der Beispiel Software GmbH, München",
-      "source": "hr",
-      "url": "https://www.handelsregister.de",
-      "demo": true
+      "url": "https://www.finance-magazin.de/cfo/cfo-wechsel/christoph-burkhard-soll-als-neuer-cfo-heidelberg-druck-transformieren-249272/"
     }
   ],
   "meta": {
-    "updated": "2026-07-09T13:07:35.003Z",
-    "demo": true
+    "updated": "2026-08-20T11:49:47.311Z"
   }
 }
