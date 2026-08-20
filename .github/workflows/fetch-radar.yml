@@ -1,0 +1,32 @@
+name: Fetch Growth Signals
+
+on:
+  schedule:
+    - cron: "0 5 * * 1,4"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Ingest sources & extract signals
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          HANDELSREGISTER_API_KEY: ${{ secrets.HANDELSREGISTER_API_KEY }}
+        run: cd wachstums-radar && node scripts/fetch-radar.js
+
+      - name: Commit pending queue
+        run: |
+          git config user.name "kxk-radar-bot"
+          git config user.email "bot@kempkenskohler.com"
+          git add wachstums-radar/data/pending.json wachstums-radar/data/hr-cursor.json
+          git diff --cached --quiet || git commit -m "Radar pending: $(date +%Y-%m-%d)"
+          git push
