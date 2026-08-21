@@ -18,6 +18,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { holeSignale } = require("./hr-signals");
 
 const ROOT = path.join(__dirname, "..");
 const SOURCES = JSON.parse(fs.readFileSync(path.join(ROOT, "config/sources.json"), "utf8"));
@@ -76,15 +77,14 @@ async function fetchRss() {
 /* ---------- 2. Handelsregister (Watchlist) ---------- */
 async function fetchRegister() {
   if (MOCK) return mockRegisterItems();
-  if (!SOURCES.handelsregister.enabled || !HR_KEY) {
-    console.log("  Handelsregister: übersprungen (kein HANDELSREGISTER_API_KEY)");
+  if (!SOURCES.handelsregister.enabled) {
+    console.log("  Handelsregister: abgeschaltet (config/sources.json).");
     return [];
   }
-  const out = [];
-
-  /* Credit-Bremse: pro Lauf nur max_calls_per_run Firmen abfragen (1 Aufruf = 1 Credit).
-     Die Watchlist wird rotierend abgearbeitet, damit auch lange Listen ueber mehrere
-     Laeufe vollstaendig durchlaufen, ohne das Guthaben auf einmal zu verbrennen. */
+  /* Credit-Bremse: pro Lauf nur einen Ausschnitt der Watchlist, rotierend.
+     Ueber die Signals-API kostet eine Seite 20 Credits und deckt bis zu
+     fuenf Firmen ab — also rund 4 Credits pro Firma statt 6 ueber
+     fetch-organization. */
   const alle = WATCHLIST.companies;
   const max = Number(SOURCES.handelsregister.max_calls_per_run) || alle.length;
   const cursorFile = path.join(__dirname, "../data/hr-cursor.json");
@@ -92,35 +92,19 @@ async function fetchRegister() {
   try { start = JSON.parse(fs.readFileSync(cursorFile, "utf8")).next || 0; } catch (e) {}
   if (start >= alle.length) start = 0;
   const scheibe = alle.slice(start, start + max);
-  const naechster = (start + max >= alle.length) ? 0 : start + max;   // sauber auf Anfang zurueck
+  const naechster = (start + max >= alle.length) ? 0 : start + max;
   fs.mkdirSync(path.dirname(cursorFile), { recursive: true });
   fs.writeFileSync(cursorFile, JSON.stringify({ next: naechster, updated: new Date().toISOString() }, null, 2));
-  console.log(`  Handelsregister: Firmen ${start + 1}\u2013${start + scheibe.length} von ${alle.length} (max ${max} Credits diesen Lauf)`);
+  console.log(`  Handelsregister: Firmen ${start + 1}\u2013${start + scheibe.length} von ${alle.length}`);
 
-  for (const c of scheibe) {
-    try {
-      const url = `${SOURCES.handelsregister.base_url}/fetch-organization?` +
-        new URLSearchParams({ q: c.name, features: "publications" });
-      const res = await fetch(url, { headers: { "x-api-key": HR_KEY } });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
-      for (const pub of (data.publications || [])) {
-        out.push({
-          title: `${c.name}: ${pub.type || "Bekanntmachung"}`,
-          teaser: (pub.text || "").slice(0, 600),
-          url: pub.url || "https://www.handelsregister.de",
-          date: pub.date || new Date().toISOString(),
-          source: "hr",
-          watchlist_vertical: c.vertical,
-          watchlist_city: c.city
-        });
-      }
-    } catch (e) {
-      console.warn(`  HR ${c.name}: ${e.message}`);
-    }
-    await sleep(400);
-  }
-  return out;
+  return holeSignale({
+    firmen: scheibe,
+    key: HR_KEY,
+    wurzel: ROOT,
+    // Budget je Lauf: eine Seite (20 Credits) deckt fuenf Firmen ab,
+    // plus Reserve fuer die einmalige Namensaufloesung.
+    maxCredits: Math.ceil(scheibe.length / 5) * 20 + Math.ceil(scheibe.length / 4)
+  });
 }
 
 /* ---------- 3. Relevanzfilter + Claude-Extraktion ---------- */
@@ -145,7 +129,9 @@ Antworte NUR mit JSON, ohne Markdown:
  "company": string,
  "city": string|null,
  "vertical": "masch"|"ls"|"tech"|"pe"|"fam"|null,   // fam nur bei erkennbarem Familienunternehmen
- "summary": string             // EIN Satz, EIGENE Formulierung (keine Übernahme des Quelltexts), Muster: "wird CFO der X GmbH, Ort — Kontext"
+ "summary": string,            // EIN Satz auf DEUTSCH, EIGENE Formulierung (keine Übernahme des Quelltexts), Muster: "wird CFO der X GmbH, Ort — Kontext". Firmennamen IMMER ausschreiben, nie umschreiben ("des Familienunternehmens").
+ "summary_en": string,         // derselbe Satz auf ENGLISCH, eigenständig formuliert statt wörtlich übersetzt. Firmen- und Personennamen unverändert lassen.
+ "role_en": string             // Zielfunktion auf Englisch (CFO, CHRO, Managing Director, Labour Director, ...)
 }
 Regeln: Nur belegte Fakten aus Titel/Teaser, nichts erfinden. is_change=false bei Unsicherheit, Interviews, Gerüchten, zweiter Ebene unterhalb Bereichsleitung.`;
 

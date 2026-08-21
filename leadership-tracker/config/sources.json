@@ -35,9 +35,12 @@
   "handelsregister": {
     "enabled": false,
     "base_url": "https://handelsregister.ai/api/v1",
-    "comment": "API-Key als Env HANDELSREGISTER_API_KEY (Header x-api-key). Endpunkte beim Setup gegen https://handelsregister.ai/de/documentation prüfen — Feature 'publications' liefert Bekanntmachungen inkl. GF-Bestellungen je Unternehmen der Watchlist. | 19.08.2026: auf false gesetzt — laeuft rein RSS-basiert, bis ein Key hinterlegt ist. Zum Aktivieren enabled auf true setzen.",
+    "comment": "Ueber die Signals-API (GET /v1/signals). Topic ROLE_HOLDER_CHANGES ist in jedem Tarif enthalten. API-Key als Env HANDELSREGISTER_API_KEY (Header x-api-key). Geprueft gegen handelsregister.ai/llms.txt am 21.08.2026.",
     "max_calls_per_run": 20,
-    "budget_comment": "max_calls_per_run begrenzt die Handelsregister-Abfragen pro Lauf = verbrauchte Credits pro Lauf. Ein Aufruf pro Firma. Die Watchlist wird rotierend abgearbeitet (Cursor in data/hr-cursor.json), grosse Listen werden also ueber mehrere Tage abgedeckt statt auf einmal. Rechnung: 20 Aufrufe x 21 Werktage = 420 Credits/Monat, passt in das kostenlose Kontingent von 500."
+    "budget_comment": "max_calls_per_run = Firmen je Lauf. Eine Signals-Seite kostet 20 Credits und deckt bis zu 5 Firmen ab, also rund 4 Credits pro Firma und Lauf. Bei 20 Firmen werktags sind das etwa 1.700 Credits im Monat. Einmalig kommt 1 Credit je Firma fuer die Namensaufloesung dazu (gemerkt in data/entity-ids.json).",
+    "api": "signals",
+    "topic": "ROLE_HOLDER_CHANGES",
+    "enable_hinweis": "Auf true stellen, sobald die echte Watchlist von KxK vorliegt."
   },
   "relevance_keywords": [
     "Geschäftsführer",

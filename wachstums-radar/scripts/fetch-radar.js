@@ -68,7 +68,7 @@ async function fetchRss() {
 async function fetchInsolvencies() {
   if (MOCK) return mockHr();
   if (!SOURCES.handelsregister.enabled || !HR_KEY) {
-    console.log("  Insolvenzsignale: übersprungen (kein HANDELSREGISTER_API_KEY)");
+    console.log("  Insolvenzsignale: übersprungen (Register-Quelle abgeschaltet — INSOLVENCIES erfordert Pro-Plan).");
     return [];
   }
   const out = [];
@@ -90,11 +90,11 @@ async function fetchInsolvencies() {
   for (const c of scheibe) {
     try {
       const url = `${SOURCES.handelsregister.base_url}/fetch-organization?` +
-        new URLSearchParams({ q: c.name, features: SOURCES.handelsregister.feature });
+        new URLSearchParams({ q: c.name, feature: SOURCES.handelsregister.feature });
       const res = await fetch(url, { headers: { "x-api-key": HR_KEY } });
       if (!res.ok) throw new Error("HTTP " + res.status);
       const data = await res.json();
-      for (const ins of (data.insolvencies || [])) {
+      for (const ins of (data.insolvency_publications || data.insolvencies || [])) {
         out.push({ title: `${c.name}: Insolvenzbekanntmachung`, teaser: (ins.text || ins.event || "").slice(0, 500),
           url: ins.url || "https://www.insolvenzbekanntmachungen.de",
           date: ins.date || new Date().toISOString(), source: "hr", hint_type: "restr", hint_city: c.city });
@@ -129,16 +129,20 @@ Antworte NUR mit JSON, ohne Markdown:
  "signal_type": "funding"|"expansion"|"ma"|"restr",
  "round_label": string,       // kurz, z.B. "Series B · 48 Mio. €", "Werksausbau", "Add-on-Akquisition", "Restrukturierung"
  "amount_meur": number|null,  // Betrag in Mio. EUR, falls genannt
- "desc": string,              // EIN Satz, EIGENE Formulierung, nur belegte Fakten
+ "desc": string,              // EIN Satz auf DEUTSCH, EIGENE Formulierung, nur belegte Fakten. Firmennamen ausschreiben.
+ "desc_en": string,           // derselbe Satz auf ENGLISCH, eigenständig formuliert statt wörtlich übersetzt
+ "location_en": string|null,  // "City · industry", englische Entsprechung zu location
+ "round_label_en": string,    // englische Entsprechung, z.B. "Series B · EUR 48m", "Plant expansion", "Add-on acquisition"
  "implications": [            // wahrscheinliche Führungs-Besetzungen in 6-12 Monaten (max 3)
-   {"label": string,          // z.B. "CRO-Bedarf", "CFO Capital Markets", "Werkleiter"
+   {"label": string,          // deutsch, z.B. "CRO-Bedarf", "CFO Capital Markets", "Werkleiter"
+    "label_en": string,       // englisch, z.B. "CRO required", "CFO capital markets", "Plant manager"
     "strength": "hard"|"soft"}]}
 Regeln: implications sind EINSCHÄTZUNGEN aus Signaltyp und Unternehmensphase — konservativ ableiten. is_signal=false bei Nicht-DACH, Gerüchten, Produktnews, Personalien (dafür gibt es den Tracker).`;
 
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: { "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-    body: JSON.stringify({ model: "claude-sonnet-4-6", max_tokens: 600,
+    body: JSON.stringify({ model: "claude-sonnet-4-6", max_tokens: 900,
       messages: [{ role: "user", content: prompt }] })
   });
   if (!res.ok) throw new Error("Claude API HTTP " + res.status);

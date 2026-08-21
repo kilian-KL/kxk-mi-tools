@@ -29,10 +29,9 @@
   "handelsregister": {
     "enabled": false,
     "base_url": "https://handelsregister.ai/api/v1",
-    "feature": "insolvencies",
-    "comment": "Restrukturierungssignale: Insolvenz-Bekanntmachungen der Watchlist-Unternehmen (gleicher Key wie beim Tracker, Header x-api-key). Endpunkt beim Setup gegen die Doku prüfen. | 19.08.2026: auf false gesetzt — laeuft rein RSS-basiert.",
-    "max_calls_per_run": 10,
-    "budget_comment": "Ein Aufruf pro Firma = ein Credit. Watchlist wird rotierend abgearbeitet (data/hr-cursor.json). 10 Aufrufe x 8 Laeufe/Monat (Mo+Do) = 80 Credits/Monat."
+    "feature": "insolvency_publications",
+    "comment": "ABGESCHALTET 21.08.2026: Insolvenz-Signale aus dem Handelsregister setzen mindestens den Pro-Plan voraus (Topic INSOLVENCIES ist bei handelsregister.ai Pro-only, Feature insolvency_publications kostet 5 Credits zusaetzlich zum Grundpreis). KxK hat den Plus-Plan. Restrukturierungssignale kommen daher ausschliesslich aus den Presse-Feeds. Wieder einschalten: enabled auf true, sobald der Plan Pro ist.",
+    "max_calls_per_run": 10
   },
   "relevance_keywords": {
     "funding": [
